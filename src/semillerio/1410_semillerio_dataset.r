@@ -164,6 +164,8 @@ Corregir( dataset )
 cols_analiticas  <- copy( setdiff( colnames(dataset),  c("numero_de_cliente","foto_mes","mes","clase_ternaria") ) )
 
 Lags(  cols_analiticas, 1, deltas=TRUE )
+Lags(  cols_analiticas, 3, deltas=TRUE )
+
 
 #dejo la clase como ultimo campo
 nuevo_orden  <- c( setdiff( colnames( dataset ) , "clase_ternaria" ) , "clase_ternaria" )
@@ -172,7 +174,7 @@ setcolorder( dataset, nuevo_orden )
 
 #Grabo el dataset
 fwrite( dataset,
-        paste0( "./datasets/semillerio_dataset_lag1.csv.gz" ),
+        paste0( "./datasets/semillerio_dataset_lag1_3.csv.gz" ),
         logical01 = TRUE,
         sep= "," )
 
